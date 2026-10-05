@@ -1,0 +1,43 @@
+{
+  "name": "graphquest",
+  "version": "1.0.0",
+  "description": "GraphQuest - An Interactive Gamified Graph Theory Learning Game & System for Discrete Mathematics (7MA206)",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "server": "node server/server.js",
+    "client": "vite client --port 5173",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "build": "vite build client",
+    "test": "jest --verbose --runInBand"
+  },
+  "keywords": [
+    "discrete-mathematics",
+    "graph-theory",
+    "gamification",
+    "bfs",
+    "dfs",
+    "eulerian-path",
+    "hamiltonian-cycle"
+  ],
+  "author": "S.Y. B.Tech IT Team",
+  "license": "MIT",
+  "type": "commonjs",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.5",
+    "cross-env": "^10.1.0",
+    "jest": "^30.5.2",
+    "supertest": "^7.3.1",
+    "vite": "^8.3.2"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testMatch": [
+      "**/tests/**/*.test.js"
+    ]
+  }
+}

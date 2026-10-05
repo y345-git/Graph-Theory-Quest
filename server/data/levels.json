@@ -1,0 +1,676 @@
+[
+  {
+    "id": 101,
+    "worldId": 1,
+    "worldTitle": "What is a Graph?",
+    "levelNumber": "1.1",
+    "title": "Identify Objects",
+    "concept": "Objects as Vertices",
+    "theory": "In Discrete Mathematics, a **Graph** $G = (V, E)$ represents a collection of objects and relationships. Objects are modeled as **Vertices** (points/nodes), and relationships are modeled as **Edges** (lines).",
+    "objective": "Select the visual element that represents an individual object.",
+    "interactionType": "MULTIPLE_CHOICE",
+    "graph": {
+      "vertices": ["A", "B"],
+      "edges": [["A", "B"]],
+      "positions": { "A": { "x": 180, "y": 200 }, "B": { "x": 420, "y": 200 } }
+    },
+    "question": "Which part represents an object (entity)?",
+    "options": [
+      "The points / nodes (●)",
+      "The connecting line (────)",
+      "The empty space",
+      "The distance"
+    ],
+    "correctAnswer": 0,
+    "hints": [
+      "Look at the labeled circles A and B.",
+      "In graphs, objects (houses, cities, people) are points called vertices.",
+      "Select 'The points / nodes (●)'."
+    ],
+    "xp": 50,
+    "explanation": "Correct! In graph theory $G = (V, E)$, vertices (points) represent objects and edges (lines) represent connections."
+  },
+  {
+    "id": 102,
+    "worldId": 1,
+    "worldTitle": "What is a Graph?",
+    "levelNumber": "1.2",
+    "title": "Identify Connections",
+    "concept": "Relationships as Edges",
+    "theory": "An **Edge** $e = (u, v)$ is the line segment connecting two vertices. It shows that a connection exists between them.",
+    "objective": "Click on the connecting edge line between A and B.",
+    "interactionType": "EDGE_SELECT",
+    "graph": {
+      "vertices": ["A", "B"],
+      "edges": [["A", "B"]],
+      "positions": { "A": { "x": 180, "y": 200 }, "B": { "x": 420, "y": 200 } }
+    },
+    "question": "Click on the line (edge) connecting vertex A and vertex B.",
+    "correctAnswer": ["A", "B"],
+    "hints": [
+      "Click directly on the line connecting A and B.",
+      "Lines in a graph are called edges.",
+      "Click the line between A and B."
+    ],
+    "xp": 50,
+    "explanation": "Great! The line between A and B is the edge $(A, B) \\in E$."
+  },
+  {
+    "id": 103,
+    "worldId": 1,
+    "worldTitle": "What is a Graph?",
+    "levelNumber": "1.3",
+    "title": "Count Vertices",
+    "concept": "Counting Objects",
+    "theory": "The **Order** $|V|$ is simply the total count of vertices (points) in the graph.",
+    "objective": "Count how many vertices are on the screen.",
+    "interactionType": "MULTIPLE_CHOICE",
+    "graph": {
+      "vertices": ["A", "B", "C"],
+      "edges": [["A", "B"], ["B", "C"]],
+      "positions": {
+        "A": { "x": 150, "y": 200 },
+        "B": { "x": 300, "y": 200 },
+        "C": { "x": 450, "y": 200 }
+      }
+    },
+    "question": "How many vertices (points) are in this graph?",
+    "options": ["1", "2", "3", "4"],
+    "correctAnswer": 2,
+    "hints": [
+      "Count each labeled circle: A, B, and C.",
+      "There are 3 points: A, B, and C.",
+      "Choose 3."
+    ],
+    "xp": 50,
+    "explanation": "Spot on! There are 3 vertices: $V = \\{A, B, C\\}$, so $|V| = 3$."
+  },
+  {
+    "id": 104,
+    "worldId": 1,
+    "worldTitle": "What is a Graph?",
+    "levelNumber": "1.4",
+    "title": "Count Edges",
+    "concept": "Counting Connections",
+    "theory": "The **Size** $|E|$ is the total count of edges (connecting lines) in the graph.",
+    "objective": "Count how many edges connect the vertices.",
+    "interactionType": "MULTIPLE_CHOICE",
+    "graph": {
+      "vertices": ["A", "B", "C"],
+      "edges": [["A", "B"], ["B", "C"]],
+      "positions": {
+        "A": { "x": 150, "y": 200 },
+        "B": { "x": 300, "y": 200 },
+        "C": { "x": 450, "y": 200 }
+      }
+    },
+    "question": "How many edges (lines) are in this graph?",
+    "options": ["1", "2", "3", "4"],
+    "correctAnswer": 1,
+    "hints": [
+      "Count the lines: line (A-B) and line (B-C).",
+      "There are 2 lines connecting the 3 points.",
+      "Choose 2."
+    ],
+    "xp": 50,
+    "explanation": "Correct! There are 2 edges: $E = \\{(A, B), (B, C)\\}$, so $|E| = 2$."
+  },
+  {
+    "id": 105,
+    "worldId": 1,
+    "worldTitle": "What is a Graph?",
+    "levelNumber": "1.5",
+    "title": "Isolated Vertex",
+    "concept": "Isolated Node",
+    "theory": "An **Isolated Vertex** is a point that has no lines (edges) connecting to it.",
+    "objective": "Identify the lone isolated vertex.",
+    "interactionType": "MULTIPLE_CHOICE",
+    "graph": {
+      "vertices": ["A", "B", "C"],
+      "edges": [["A", "B"]],
+      "positions": {
+        "A": { "x": 180, "y": 200 },
+        "B": { "x": 340, "y": 200 },
+        "C": { "x": 480, "y": 200 }
+      }
+    },
+    "question": "Which vertex is isolated (has zero connections)?",
+    "options": ["Vertex A", "Vertex B", "Vertex C", "None"],
+    "correctAnswer": 2,
+    "hints": [
+      "Look for the circle that has no line touching it.",
+      "C has 0 connections.",
+      "Select 'Vertex C'."
+    ],
+    "xp": 50,
+    "explanation": "Correct! Vertex C has degree 0, meaning it is an isolated vertex."
+  },
+
+  {
+    "id": 201,
+    "worldId": 2,
+    "worldTitle": "Vertices and Edges",
+    "levelNumber": "2.1",
+    "title": "Select All Vertices",
+    "concept": "Vertex Set V",
+    "theory": "In formal mathematics, $V = \\{A, B, C\\}$ is the set of all vertices.",
+    "objective": "Click on all 3 vertices to select them.",
+    "interactionType": "VERTEX_SELECT",
+    "graph": {
+      "vertices": ["A", "B", "C"],
+      "edges": [["A", "B"], ["B", "C"], ["C", "A"]],
+      "positions": {
+        "A": { "x": 300, "y": 100 },
+        "B": { "x": 450, "y": 280 },
+        "C": { "x": 150, "y": 280 }
+      }
+    },
+    "question": "Click and highlight all 3 vertices (A, B, C).",
+    "correctAnswer": ["A", "B", "C"],
+    "hints": [
+      "Click each circular node: A, B, and C.",
+      "All 3 circles will glow when selected.",
+      "Select A, B, and C."
+    ],
+    "xp": 75,
+    "explanation": "Well done! You selected the complete vertex set $V = \\{A, B, C\\}$."
+  },
+  {
+    "id": 202,
+    "worldId": 2,
+    "worldTitle": "Vertices and Edges",
+    "levelNumber": "2.2",
+    "title": "Find Adjacent Neighbors",
+    "concept": "Adjacency",
+    "theory": "Two vertices are **adjacent** (neighbors) if there is a direct edge line connecting them.",
+    "objective": "Identify which vertex is directly connected to A.",
+    "interactionType": "MULTIPLE_CHOICE",
+    "graph": {
+      "vertices": ["A", "B", "C"],
+      "edges": [["A", "B"]],
+      "positions": {
+        "A": { "x": 180, "y": 200 },
+        "B": { "x": 340, "y": 200 },
+        "C": { "x": 480, "y": 200 }
+      }
+    },
+    "question": "Which vertex is adjacent to vertex A (connected to A by an edge)?",
+    "options": ["Vertex B", "Vertex C", "Both B and C", "None"],
+    "correctAnswer": 0,
+    "hints": [
+      "Look at where the line from A leads.",
+      "A is connected directly to B. C has no line to A.",
+      "Choose 'Vertex B'."
+    ],
+    "xp": 75,
+    "explanation": "Correct! Edge $(A, B)$ exists, so A and B are adjacent. C has no edge to A."
+  },
+  {
+    "id": 203,
+    "worldId": 2,
+    "worldTitle": "Vertices and Edges",
+    "levelNumber": "2.3",
+    "title": "Select the Edge",
+    "concept": "Edge Selection",
+    "theory": "An edge connects a pair of vertices $(u, v)$.",
+    "objective": "Click on the edge between A and B.",
+    "interactionType": "EDGE_SELECT",
+    "graph": {
+      "vertices": ["A", "B", "C"],
+      "edges": [["A", "B"], ["B", "C"]],
+      "positions": {
+        "A": { "x": 150, "y": 200 },
+        "B": { "x": 300, "y": 200 },
+        "C": { "x": 450, "y": 200 }
+      }
+    },
+    "question": "Click on the edge connecting A and B.",
+    "correctAnswer": ["A", "B"],
+    "hints": [
+      "Click the line connecting A and B.",
+      "Hover over the left line.",
+      "Click the line between A and B."
+    ],
+    "xp": 75,
+    "explanation": "Great! You selected the edge $(A, B)$."
+  },
+
+  {
+    "id": 301,
+    "worldId": 3,
+    "worldTitle": "Understanding Degree",
+    "levelNumber": "3.1",
+    "title": "What is Degree?",
+    "concept": "Vertex Degree",
+    "theory": "The **degree** of a vertex is simply the **number of lines (edges) touching it**.",
+    "objective": "Count how many lines touch vertex B.",
+    "interactionType": "DEGREE_INPUT",
+    "targetVertex": "B",
+    "graph": {
+      "vertices": ["A", "B", "C"],
+      "edges": [["A", "B"], ["B", "C"]],
+      "positions": {
+        "A": { "x": 150, "y": 200 },
+        "B": { "x": 300, "y": 200 },
+        "C": { "x": 450, "y": 200 }
+      }
+    },
+    "question": "How many edges touch vertex B? Enter deg(B):",
+    "correctAnswer": 2,
+    "hints": [
+      "Look at node B in the center.",
+      "Two edges touch B: line (A-B) and line (B-C).",
+      "Enter 2."
+    ],
+    "xp": 75,
+    "explanation": "Correct! Vertex B has 2 incident edges, so $\\deg(B) = 2$."
+  },
+  {
+    "id": 302,
+    "worldId": 3,
+    "worldTitle": "Understanding Degree",
+    "levelNumber": "3.2",
+    "title": "Find Leaf Vertex (Degree 1)",
+    "concept": "Pendant / Leaf Vertex",
+    "theory": "A vertex with **degree 1** is called a **leaf** or **pendant vertex** (an endpoint with only 1 connection).",
+    "objective": "Identify the degree 1 endpoint vertex.",
+    "interactionType": "MULTIPLE_CHOICE",
+    "graph": {
+      "vertices": ["A", "B", "C"],
+      "edges": [["A", "B"], ["B", "C"]],
+      "positions": {
+        "A": { "x": 150, "y": 200 },
+        "B": { "x": 300, "y": 200 },
+        "C": { "x": 450, "y": 200 }
+      }
+    },
+    "question": "What is the degree of vertex A?",
+    "options": ["0", "1", "2", "3"],
+    "correctAnswer": 1,
+    "hints": [
+      "Count the edges connected to A.",
+      "Only one line connects to A (line A-B).",
+      "deg(A) = 1."
+    ],
+    "xp": 75,
+    "explanation": "Awesome! Vertex A has exactly 1 connection, so $\\deg(A) = 1$."
+  },
+  {
+    "id": 303,
+    "worldId": 3,
+    "worldTitle": "Understanding Degree",
+    "levelNumber": "3.3",
+    "title": "The Handshaking Rule",
+    "concept": "Sum of Degrees = 2 * Edges",
+    "theory": "The **Handshaking Lemma** says: If you add up the degrees of all vertices, the sum is always **$2 \\times \\text{total edges}$**.\n$$\\sum \\deg(v) = 2|E|$$",
+    "objective": "Apply the Handshaking rule.",
+    "interactionType": "MULTIPLE_CHOICE",
+    "graph": {
+      "vertices": ["A", "B", "C"],
+      "edges": [["A", "B"], ["B", "C"], ["C", "A"]],
+      "positions": {
+        "A": { "x": 300, "y": 100 },
+        "B": { "x": 450, "y": 280 },
+        "C": { "x": 150, "y": 280 }
+      }
+    },
+    "question": "In this triangle with 3 edges, what is the sum of all vertex degrees (2 * 3)?",
+    "options": ["3", "4", "6", "9"],
+    "correctAnswer": 2,
+    "hints": [
+      "Formula: Sum of degrees = 2 * (Number of edges).",
+      "There are 3 edges, so 2 * 3 = 6.",
+      "Choose 6."
+    ],
+    "xp": 100,
+    "explanation": "Correct! $\\sum \\deg(v) = \\deg(A) + \\deg(B) + \\deg(C) = 2 + 2 + 2 = 6 = 2 \\times 3$."
+  },
+
+  {
+    "id": 401,
+    "worldId": 4,
+    "worldTitle": "Representing Graphs",
+    "levelNumber": "4.1",
+    "title": "Adjacency Matrix Basics",
+    "concept": "Matrix Connection Entry",
+    "theory": "An **Adjacency Matrix** is a grid where entry $A[u][v] = 1$ if vertices $u$ and $v$ are connected, and $0$ if they are not.",
+    "objective": "Check the connection value between A and B.",
+    "interactionType": "MULTIPLE_CHOICE",
+    "graph": {
+      "vertices": ["A", "B", "C"],
+      "edges": [["A", "B"]],
+      "positions": {
+        "A": { "x": 180, "y": 200 },
+        "B": { "x": 340, "y": 200 },
+        "C": { "x": 480, "y": 200 }
+      }
+    },
+    "question": "Since A and B ARE connected, but A and C are NOT connected, what are A[A][B] and A[A][C]?",
+    "options": [
+      "A[A][B] = 1, A[A][C] = 0",
+      "A[A][B] = 0, A[A][C] = 1",
+      "A[A][B] = 1, A[A][C] = 1",
+      "A[A][B] = 0, A[A][C] = 0"
+    ],
+    "correctAnswer": 0,
+    "hints": [
+      "1 means connected; 0 means no connection.",
+      "A is connected to B (1). A is not connected to C (0).",
+      "Select option 1."
+    ],
+    "xp": 100,
+    "explanation": "Correct! $A_{AB} = 1$ because edge $(A,B)$ exists; $A_{AC} = 0$ because edge $(A,C)$ does not exist."
+  },
+
+  {
+    "id": 501,
+    "worldId": 5,
+    "worldTitle": "Walks, Trails and Paths",
+    "levelNumber": "5.1",
+    "title": "What is a Simple Path?",
+    "concept": "Path Concept",
+    "theory": "A **Simple Path** is a route that travels from one vertex to another **without repeating any vertex**.",
+    "objective": "Trace a simple path from A to C.",
+    "interactionType": "PATH_TRACE",
+    "targetType": "PATH",
+    "startVertex": "A",
+    "endVertex": "C",
+    "graph": {
+      "vertices": ["A", "B", "C"],
+      "edges": [["A", "B"], ["B", "C"]],
+      "positions": {
+        "A": { "x": 150, "y": 200 },
+        "B": { "x": 300, "y": 200 },
+        "C": { "x": 450, "y": 200 }
+      }
+    },
+    "question": "Click vertices in order to trace a path from A to C: (A → B → C).",
+    "correctAnswer": ["A", "B", "C"],
+    "hints": [
+      "Click A first, then B, then C.",
+      "Follow the connected path: A -> B -> C.",
+      "Click A, B, C in sequence."
+    ],
+    "xp": 100,
+    "explanation": "Great job! A → B → C is a valid simple path connecting A to C."
+  },
+
+  {
+    "id": 601,
+    "worldId": 6,
+    "worldTitle": "Cycles and Connectivity",
+    "levelNumber": "6.1",
+    "title": "Trace a Simple Cycle",
+    "concept": "Cycle Concept",
+    "theory": "A **Cycle** is a closed loop that starts and finishes at the **same vertex**.",
+    "objective": "Trace a 3-node cycle starting and ending at A.",
+    "interactionType": "PATH_TRACE",
+    "targetType": "CYCLE",
+    "startVertex": "A",
+    "graph": {
+      "vertices": ["A", "B", "C"],
+      "edges": [["A", "B"], ["B", "C"], ["C", "A"]],
+      "positions": {
+        "A": { "x": 300, "y": 100 },
+        "B": { "x": 450, "y": 280 },
+        "C": { "x": 150, "y": 280 }
+      }
+    },
+    "question": "Click vertices to trace a loop: A → B → C → A.",
+    "correctAnswer": ["A", "B", "C", "A"],
+    "hints": [
+      "Start at A, click B, click C, and return to A.",
+      "A cycle must return to where it began.",
+      "Sequence: A -> B -> C -> A."
+    ],
+    "xp": 125,
+    "explanation": "Excellent! You traced a valid 3-cycle $C_3$."
+  },
+  {
+    "id": 602,
+    "worldId": 6,
+    "worldTitle": "Cycles and Connectivity",
+    "levelNumber": "6.2",
+    "title": "Connected vs Disconnected",
+    "concept": "Connectivity",
+    "theory": "A graph is **Connected** if you can travel from every vertex to every other vertex. If it is split into separate islands, it is **Disconnected**.",
+    "objective": "Identify if this graph is connected.",
+    "interactionType": "MULTIPLE_CHOICE",
+    "graph": {
+      "vertices": ["A", "B", "C", "D"],
+      "edges": [["A", "B"], ["C", "D"]],
+      "positions": {
+        "A": { "x": 150, "y": 150 },
+        "B": { "x": 270, "y": 150 },
+        "C": { "x": 390, "y": 250 },
+        "D": { "x": 510, "y": 250 }
+      }
+    },
+    "question": "Is this graph connected (can you travel from A to D)?",
+    "options": [
+      "No, it is Disconnected (2 separate components)",
+      "Yes, it is Connected in one piece",
+      "It is a Complete graph",
+      "It is a Tree"
+    ],
+    "correctAnswer": 0,
+    "hints": [
+      "Notice that {A, B} and {C, D} have no bridge between them.",
+      "There is no way to reach C or D from A.",
+      "Select 'No, it is Disconnected'."
+    ],
+    "xp": 100,
+    "explanation": "Correct! The graph has 2 separate components $C_1 = \\{A, B\\}$ and $C_2 = \\{C, D\\}$, so it is disconnected."
+  },
+
+  {
+    "id": 701,
+    "worldId": 7,
+    "worldTitle": "BFS and DFS Traversals",
+    "levelNumber": "7.1",
+    "title": "Breadth-First Search (BFS)",
+    "concept": "BFS Level Traversal",
+    "theory": "**BFS (Breadth-First Search)** explores all immediate neighbors first before moving further away.",
+    "objective": "Predict BFS exploration from root vertex A.",
+    "interactionType": "MULTIPLE_CHOICE",
+    "graph": {
+      "vertices": ["A", "B", "C"],
+      "edges": [["A", "B"], ["A", "C"]],
+      "positions": {
+        "A": { "x": 300, "y": 100 },
+        "B": { "x": 180, "y": 250 },
+        "C": { "x": 420, "y": 250 }
+      }
+    },
+    "question": "Starting at A, which neighbors does BFS visit next?",
+    "options": [
+      "Both immediate neighbors B and C (A → B → C)",
+      "Only B, skipping C",
+      "C first, then backtracks forever",
+      "None"
+    ],
+    "correctAnswer": 0,
+    "hints": [
+      "BFS visits all level 1 neighbors of A.",
+      "Level 0 is A, Level 1 is B and C.",
+      "Order: A -> B -> C."
+    ],
+    "xp": 125,
+    "explanation": "Correct! BFS visits root A, then both immediate adjacent neighbors B and C."
+  },
+
+  {
+    "id": 801,
+    "worldId": 8,
+    "worldTitle": "Euler Paths and Circuits",
+    "levelNumber": "8.1",
+    "title": "Euler Rule: All Even Degrees",
+    "concept": "Euler Circuit Rule",
+    "theory": "An **Euler Circuit** visits **every edge exactly once** and returns to the start. Euler's Theorem says: It exists if **every vertex has an EVEN degree**.",
+    "objective": "Check if an Euler Circuit exists on a square ($C_4$).",
+    "interactionType": "MULTIPLE_CHOICE",
+    "graph": {
+      "vertices": ["A", "B", "C", "D"],
+      "edges": [["A", "B"], ["B", "C"], ["C", "D"], ["D", "A"]],
+      "positions": {
+        "A": { "x": 180, "y": 120 },
+        "B": { "x": 420, "y": 120 },
+        "C": { "x": 420, "y": 280 },
+        "D": { "x": 180, "y": 280 }
+      }
+    },
+    "question": "In this 4-node square, every vertex has degree 2 (even). Does an Euler Circuit exist?",
+    "options": [
+      "Yes! (All vertices have even degrees)",
+      "No, degrees must be odd",
+      "Only an Euler path exists",
+      "None"
+    ],
+    "correctAnswer": 0,
+    "hints": [
+      "Count the degree of each node: deg(A)=2, deg(B)=2, deg(C)=2, deg(D)=2.",
+      "Since all degrees are even (0 odd vertices), an Euler Circuit exists.",
+      "Select 'Yes!'."
+    ],
+    "xp": 150,
+    "explanation": "Correct! Euler's Theorem guarantees an Euler Circuit when all vertices have even degree."
+  },
+  {
+    "id": 802,
+    "worldId": 8,
+    "worldTitle": "Euler Paths and Circuits",
+    "levelNumber": "8.2",
+    "title": "Trace an Euler Circuit",
+    "concept": "Visit Every Edge Once",
+    "theory": "Trace around the square visiting all 4 edges without repeating any line.",
+    "objective": "Click vertices in sequence to visit all 4 edges: A → B → C → D → A.",
+    "interactionType": "PATH_TRACE",
+    "targetType": "EULER_CIRCUIT",
+    "startVertex": "A",
+    "graph": {
+      "vertices": ["A", "B", "C", "D"],
+      "edges": [["A", "B"], ["B", "C"], ["C", "D"], ["D", "A"]],
+      "positions": {
+        "A": { "x": 180, "y": 120 },
+        "B": { "x": 420, "y": 120 },
+        "C": { "x": 420, "y": 280 },
+        "D": { "x": 180, "y": 280 }
+      }
+    },
+    "question": "Trace the Euler Circuit: A → B → C → D → A.",
+    "correctAnswer": ["A", "B", "C", "D", "A"],
+    "hints": [
+      "Start at A, click B, click C, click D, then click A.",
+      "This uses all 4 edges exactly once.",
+      "Trace: A -> B -> C -> D -> A."
+    ],
+    "xp": 150,
+    "explanation": "Awesome! You visited all 4 edges once and returned to A. Perfect Euler Circuit!"
+  },
+
+  {
+    "id": 901,
+    "worldId": 9,
+    "worldTitle": "Hamiltonian Paths and Cycles",
+    "levelNumber": "9.1",
+    "title": "Euler vs Hamilton",
+    "concept": "Edges vs Vertices",
+    "theory": "**Key Distinction:**\n• **Euler:** Focus on visiting every **EDGE** once.\n• **Hamilton:** Focus on visiting every **VERTEX** once.",
+    "objective": "Identify the primary focus of a Hamiltonian Path.",
+    "interactionType": "MULTIPLE_CHOICE",
+    "graph": {
+      "vertices": ["A", "B", "C", "D"],
+      "edges": [["A", "B"], ["B", "C"], ["C", "D"], ["D", "A"]],
+      "positions": {
+        "A": { "x": 180, "y": 120 },
+        "B": { "x": 420, "y": 120 },
+        "C": { "x": 420, "y": 280 },
+        "D": { "x": 180, "y": 280 }
+      }
+    },
+    "question": "What is the goal of a Hamiltonian Path / Cycle?",
+    "options": [
+      "Visit every VERTEX (city) exactly once",
+      "Visit every EDGE (road) exactly once",
+      "Find shortest edge weight",
+      "Count total loops"
+    ],
+    "correctAnswer": 0,
+    "hints": [
+      "Hamiltonian is about visiting all vertices (nodes).",
+      "Euler is for edges, Hamilton is for vertices.",
+      "Select 'Visit every VERTEX exactly once'."
+    ],
+    "xp": 150,
+    "explanation": "Correct! Hamiltonian = visit all vertices once; Eulerian = visit all edges once."
+  },
+  {
+    "id": 902,
+    "worldId": 9,
+    "worldTitle": "Hamiltonian Paths and Cycles",
+    "levelNumber": "9.2",
+    "title": "Trace a Hamiltonian Cycle",
+    "concept": "Visit All Vertices and Return",
+    "theory": "A **Hamiltonian Cycle** visits every vertex in the graph exactly once and returns to the start.",
+    "objective": "Trace a Hamiltonian Cycle visiting A, B, C, D once and returning to A.",
+    "interactionType": "PATH_TRACE",
+    "targetType": "HAMILTON_CYCLE",
+    "startVertex": "A",
+    "graph": {
+      "vertices": ["A", "B", "C", "D"],
+      "edges": [["A", "B"], ["B", "C"], ["C", "D"], ["D", "A"]],
+      "positions": {
+        "A": { "x": 180, "y": 120 },
+        "B": { "x": 420, "y": 120 },
+        "C": { "x": 420, "y": 280 },
+        "D": { "x": 180, "y": 280 }
+      }
+    },
+    "question": "Trace a Hamiltonian Cycle on this square: A → B → C → D → A.",
+    "correctAnswer": ["A", "B", "C", "D", "A"],
+    "hints": [
+      "Click A, then B, then C, then D, and finally A.",
+      "Every vertex is visited once and you return to A.",
+      "Trace: A -> B -> C -> D -> A."
+    ],
+    "xp": 150,
+    "explanation": "Masterful! You visited all 4 vertices once and closed the loop at A."
+  },
+
+  {
+    "id": 1001,
+    "worldId": 10,
+    "worldTitle": "Graph Theory Master",
+    "levelNumber": "10.1",
+    "title": "Mastery Graph Audit",
+    "concept": "Holistic Graph Analysis",
+    "theory": "Analyze a simple 4-vertex square graph across all basic graph theory metrics.",
+    "objective": "Complete the graph audit.",
+    "interactionType": "MASTER_ANALYSIS",
+    "graph": {
+      "vertices": ["A", "B", "C", "D"],
+      "edges": [["A", "B"], ["B", "C"], ["C", "D"], ["D", "A"]],
+      "positions": {
+        "A": { "x": 180, "y": 120 },
+        "B": { "x": 420, "y": 120 },
+        "C": { "x": 420, "y": 280 },
+        "D": { "x": 180, "y": 280 }
+      }
+    },
+    "question": "Audit: How many vertices, edges, is it connected, and do Euler & Hamiltonian cycles exist?",
+    "correctAnswers": {
+      "order": 4,
+      "size": 4,
+      "isConnected": true,
+      "eulerType": "CIRCUIT",
+      "hasHamiltonCycle": true
+    },
+    "hints": [
+      "Count vertices: 4. Count edges: 4.",
+      "It is in one piece (Connected).",
+      "All vertices have degree 2 -> Euler Circuit exists; A-B-C-D-A is a Hamiltonian cycle."
+    ],
+    "xp": 300,
+    "explanation": "Grandmaster! |V|=4, |E|=4, Connected=True, Euler Circuit=True, Hamilton Cycle=True."
+  }
+]

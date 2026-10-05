@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GraphQuest - Gamified Graph Theory Learning System</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- KaTeX for High-Rigor Mathematical Typography -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+
+  <!-- ========================================================================
+       Global Application Header
+       ======================================================================== -->
+  <header class="app-header">
+    <div class="brand-container" id="brandBtn">
+      <div class="brand-logo"><i class="fa-solid fa-diagram-project"></i></div>
+      <div class="brand-text">
+        <h1>GraphQuest</h1>
+        <span class="course-badge">7MA206 · Discrete Math ISE-2</span>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs">
+      <button class="nav-tab active" data-view="home"><i class="fa-solid fa-house"></i> Home</button>
+      <button class="nav-tab" data-view="worlds"><i class="fa-solid fa-map-location-dot"></i> Campaign</button>
+      <button class="nav-tab" data-view="lab"><i class="fa-solid fa-flask-vial"></i> Graph Lab</button>
+      <button class="nav-tab" data-view="theory"><i class="fa-solid fa-book-open"></i> Theory Hub</button>
+      <button class="nav-tab" data-view="progress"><i class="fa-solid fa-trophy"></i> Progress</button>
+    </nav>
+
+    <!-- Player Stats Bar -->
+    <div class="player-stats-bar">
+      <div class="stat-pill xp" title="Player XP"><i class="fa-solid fa-bolt"></i> <span id="playerXpDisplay">0</span> XP</div>
+      <div class="stat-pill stars" title="Total Stars"><i class="fa-solid fa-star"></i> <span id="playerStarsDisplay">0</span></div>
+      <div class="stat-pill level" title="Mastery Rank"><i class="fa-solid fa-crown"></i> <span id="playerRankDisplay">Novice</span></div>
+      <button class="audio-toggle-btn" id="audioToggleBtn" title="Toggle Sound FX"><i class="fa-solid fa-volume-high"></i></button>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       Main Content Views
+       ======================================================================== -->
+  <main>
+    
+    <!-- VIEW 1: HOME / DASHBOARD -->
+    <section id="view-home" class="view-section active">
+      <div class="hero-banner">
+        <span class="hero-tagline"><i class="fa-solid fa-graduation-cap"></i> Gamified Graph Theory Learning System</span>
+        <h2 class="hero-title">Master Graph Theory<br>From Zero to Grandmaster</h2>
+        <p class="hero-subtitle">
+          An interactive, mathematically rigorous web application mapping the complete Discrete Mathematics (7MA206) syllabus through 10 progressive worlds, visual algorithm stepping, and an open graph sandbox.
+        </p>
+        <div class="hero-cta-group">
+          <button class="btn btn-primary" id="startCampaignBtn"><i class="fa-solid fa-play"></i> Start Campaign</button>
+          <button class="btn btn-secondary" id="openLabBtn"><i class="fa-solid fa-flask"></i> Open Graph Lab</button>
+          <button class="btn btn-secondary" id="openTheoryBtn"><i class="fa-solid fa-book"></i> Read Theory</button>
+        </div>
+      </div>
+
+      <!-- Feature Grid -->
+      <div class="home-feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon" style="color: var(--accent-cyan);"><i class="fa-solid fa-cubes-stacked"></i></div>
+          <h3>10 Progressive Worlds</h3>
+          <p>Carefully structured pedagogical curriculum starting from vertices and edges up to Eulerian tours and Hamiltonian cycles.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="color: var(--accent-emerald);"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+          <h3>Step-by-Step Algorithm Tracing</h3>
+          <p>Live execution trace for BFS, DFS, Hierholzer's Euler tour, and Backtracking Hamiltonian search with stack and queue state visualizers.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="color: var(--accent-purple);"><i class="fa-solid fa-microscope"></i></div>
+          <h3>Graph Lab & Sandbox</h3>
+          <p>Interactive graph canvas with custom node/edge creation, preset standard topologies ($K_n, C_n, S_n$, Petersen), and live matrix sync.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="color: var(--accent-amber);"><i class="fa-solid fa-square-root-variable"></i></div>
+          <h3>Mathematical Rigor</h3>
+          <p>Full verification of Handshaking Lemma ($\sum \deg(v) = 2|E|$), Dirac's and Ore's Theorems, Adjacency Matrix powers $A^k$, and edge cases.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 2: CAMPAIGN / WORLD MAP -->
+    <section id="view-worlds" class="view-section">
+      <div class="world-map-header">
+        <h2><i class="fa-solid fa-map"></i> Campaign Roadmap</h2>
+        <p>Unlock new worlds progressively by mastering graph concepts and earning stars.</p>
+      </div>
+      <div class="worlds-container" id="worldsListContainer">
+        <!-- Injected via JavaScript -->
+      </div>
+    </section>
+
+    <!-- VIEW 3: GAME LEVEL PLAYER -->
+    <section id="view-game" class="view-section">
+      <div class="game-arena-container">
+        
+        <!-- Left: Canvas and Prompts -->
+        <div class="game-canvas-card">
+          <div class="game-level-header">
+            <div class="level-title-group">
+              <h2 id="gameLevelTitle">Level 1.1: Identify Objects</h2>
+              <div class="concept-tag" id="gameConceptTag"><i class="fa-solid fa-lightbulb"></i> Concept: Vertices</div>
+            </div>
+            <div class="level-stars-display" id="gameLevelStarsDisplay">
+              <i class="fa-regular fa-star"></i>
+              <i class="fa-regular fa-star"></i>
+              <i class="fa-regular fa-star"></i>
+            </div>
+          </div>
+
+          <!-- Theory Box -->
+          <div class="level-theory-box" id="gameTheoryBox">
+            <h4>Mathematical Concept</h4>
+            <div id="gameTheoryContent">In a graph $G=(V,E)$, points are vertices.</div>
+          </div>
+
+          <!-- Question Prompt -->
+          <div class="level-prompt-banner" id="gamePromptBanner">
+            Select the visual element representing an object.
+          </div>
+
+          <!-- SVG Graph Viewport -->
+          <div class="svg-viewport-wrapper">
+            <svg id="gameSvgCanvas" class="svg-canvas" viewBox="0 0 600 400">
+              <defs>
+                <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="3" result="blur" />
+                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+              </defs>
+              <g id="gameEdgesGroup"></g>
+              <g id="gameVerticesGroup"></g>
+            </svg>
+            <div class="canvas-floating-controls">
+              <button class="btn btn-secondary btn-sm" id="gameResetCanvasBtn" title="Reset Layout"><i class="fa-solid fa-arrows-rotate"></i> Reset</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Controls & Reasoning -->
+        <div class="game-side-panel">
+          
+          <!-- Dynamic Interaction Area -->
+          <div class="panel-card" id="interactionPanelCard">
+            <h3><span id="interactionPanelTitle">Your Action</span> <span class="badge" id="xpRewardBadge">+50 XP</span></h3>
+            
+            <!-- Multiple Choice Container -->
+            <div id="multipleChoiceContainer" class="choice-options-list" style="display: none;"></div>
+
+            <!-- Path Tracing Container -->
+            <div id="pathTraceContainer" style="display: none;">
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 8px;">Click nodes on canvas in order:</p>
+              <div class="path-trace-readout" id="pathTraceReadout">Start by clicking a vertex...</div>
+              <div style="display: flex; gap: 8px; margin-top: 10px;">
+                <button class="btn btn-secondary btn-sm" id="undoPathNodeBtn"><i class="fa-solid fa-rotate-left"></i> Undo</button>
+                <button class="btn btn-secondary btn-sm" id="clearPathBtn"><i class="fa-solid fa-trash"></i> Clear</button>
+              </div>
+            </div>
+
+            <!-- Degree Input Container -->
+            <div id="degreeInputContainer" style="display: none;">
+              <label style="font-size: 0.85rem; color: var(--text-secondary); display: block; margin-bottom: 8px;">Enter calculated degree:</label>
+              <div class="degree-input-container">
+                <input type="number" id="degreeInputField" class="degree-input-field" placeholder="0" min="0" />
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="game-actions-grid" style="margin-top: 16px;">
+              <button class="btn btn-primary btn-submit" id="submitAnswerBtn"><i class="fa-solid fa-check"></i> Submit Evaluation</button>
+              <button class="btn btn-secondary" id="returnToCampaignBtn"><i class="fa-solid fa-arrow-left"></i> Worlds</button>
+              <button class="btn btn-warning" id="hintToggleBtn"><i class="fa-solid fa-lightbulb"></i> Hint (-5 XP)</button>
+            </div>
+          </div>
+
+          <!-- Mathematical Reasoning / Feedback Box -->
+          <div class="panel-card">
+            <h3><i class="fa-solid fa-brain"></i> Mathematical Reasoning</h3>
+            <div class="reasoning-box" id="gameReasoningBox">
+              Select or trace your solution on the graph, then click Submit to evaluate against formal graph theorems.
+            </div>
+          </div>
+
+          <!-- Hints Accordion -->
+          <div class="panel-card" id="hintSectionCard" style="display: none;">
+            <h3><i class="fa-solid fa-wand-magic"></i> Progressive Hints</h3>
+            <div class="hint-container" id="hintsContainer"></div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- VIEW 4: GRAPH LAB (SANDBOX & EVALUATOR MODE) -->
+    <section id="view-lab" class="view-section">
+      <div class="lab-layout">
+        
+        <!-- Left: Interactive Canvas -->
+        <div class="game-canvas-card">
+          <!-- Toolbar -->
+          <div class="lab-toolbar">
+            <div class="toolbar-group">
+              <button class="btn btn-secondary btn-sm" id="labAddVertexBtn"><i class="fa-solid fa-circle-plus"></i> Add Node</button>
+              <button class="btn btn-secondary btn-sm" id="labAddEdgeBtn"><i class="fa-solid fa-link"></i> Add Edge</button>
+              <button class="btn btn-secondary btn-sm" id="labDeleteBtn"><i class="fa-solid fa-trash"></i> Delete Selected</button>
+              <button class="btn btn-secondary btn-sm" id="labClearAllBtn"><i class="fa-solid fa-broom"></i> Clear</button>
+            </div>
+            <div class="toolbar-divider"></div>
+            <div class="toolbar-group">
+              <label style="font-size: 0.8rem; color: var(--text-secondary); font-weight: 700;">Preset:</label>
+              <select id="labPresetSelect" class="lab-select">
+                <option value="complete">Complete Graph K_5</option>
+                <option value="cycle">Cycle Graph C_5</option>
+                <option value="star">Star Graph S_6</option>
+                <option value="bipartite">Bipartite K_3,3</option>
+                <option value="petersen">Petersen Graph</option>
+                <option value="koenigsberg">Königsberg Bridges</option>
+                <option value="random">Random Erdős-Rényi</option>
+              </select>
+              <button class="btn btn-primary btn-sm" id="labLoadPresetBtn"><i class="fa-solid fa-download"></i> Load</button>
+            </div>
+          </div>
+
+          <!-- Canvas Viewport -->
+          <div class="svg-viewport-wrapper" style="height: 480px;">
+            <svg id="labSvgCanvas" class="svg-canvas" viewBox="0 0 700 480">
+              <defs>
+                <filter id="glowLab" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="3" result="blur" />
+                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+              </defs>
+              <g id="labEdgesGroup"></g>
+              <g id="labVerticesGroup"></g>
+            </svg>
+            <div class="canvas-floating-controls">
+              <span id="labCanvasStatus" style="font-size: 0.8rem; color: var(--accent-cyan); align-self: center; margin-right: 8px;">Mode: Drag & Select</span>
+              <button class="btn btn-secondary btn-sm" id="labArrangeCircleBtn" title="Circular Layout"><i class="fa-solid fa-circle-notch"></i> Align</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Lab Analysis & Visualizer Panels -->
+        <div class="game-side-panel">
+          
+          <!-- Tab Navigation -->
+          <div class="lab-panel-tabs">
+            <button class="lab-tab-btn active" data-tab="analysis"><i class="fa-solid fa-chart-pie"></i> Audit</button>
+            <button class="lab-tab-btn" data-tab="matrix"><i class="fa-solid fa-table-cells"></i> Matrix</button>
+            <button class="lab-tab-btn" data-tab="animator"><i class="fa-solid fa-play"></i> Algorithm</button>
+          </div>
+
+          <!-- TAB 1: FULL MATHEMATICAL AUDIT -->
+          <div id="lab-tab-analysis" class="lab-tab-content active">
+            <div class="panel-card">
+              <h3><span>Mathematical Properties</span> <button class="btn btn-primary btn-sm" id="labRunAuditBtn"><i class="fa-solid fa-sync"></i> Analyze</button></h3>
+              <div id="labAuditResults">
+                <table class="analysis-table">
+                  <tbody>
+                    <tr><td>Order |V|:</td><td id="auditOrder">-</td></tr>
+                    <tr><td>Size |E|:</td><td id="auditSize">-</td></tr>
+                    <tr><td>Connected:</td><td id="auditConnected">-</td></tr>
+                    <tr><td>Components k(G):</td><td id="auditComponents">-</td></tr>
+                    <tr><td>Handshaking Lemma:</td><td id="auditHandshaking">-</td></tr>
+                    <tr><td>Eulerian:</td><td id="auditEuler">-</td></tr>
+                    <tr><td>Hamiltonian:</td><td id="auditHamilton">-</td></tr>
+                    <tr><td>Dirac Theorem:</td><td id="auditDirac">-</td></tr>
+                  </tbody>
+                </table>
+                <div class="reasoning-box" id="auditExplanationBox" style="margin-top: 12px; font-size: 0.82rem;">
+                  Click "Analyze" to compute formal discrete math metrics.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 2: LIVE ADJACENCY MATRIX -->
+          <div id="lab-tab-matrix" class="lab-tab-content">
+            <div class="panel-card">
+              <h3><span>Adjacency Matrix A(G)</span> <button class="btn btn-secondary btn-sm" id="labCalcMatrixPowerBtn">Power A²</button></h3>
+              <p style="font-size: 0.8rem; color: var(--text-secondary);">Click cells to toggle edges in real-time:</p>
+              <div style="overflow-x: auto;" id="labMatrixGridContainer">
+                <!-- Injected via JavaScript -->
+              </div>
+              <div class="reasoning-box" id="matrixPowerExplanation" style="margin-top: 10px; font-size: 0.82rem;">
+                Entry A_ij = 1 if edge (v_i, v_j) exists.
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 3: STEP-BY-STEP ALGORITHM ANIMATOR -->
+          <div id="lab-tab-animator" class="lab-tab-content">
+            <div class="panel-card">
+              <h3>Algorithm Visualizer</h3>
+              
+              <div class="animator-controls-card">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px;">
+                  <div>
+                    <label style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 700;">Algorithm:</label>
+                    <select id="animAlgorithmSelect" class="lab-select" style="width: 100%;">
+                      <option value="bfs">Breadth-First Search (BFS)</option>
+                      <option value="dfs">Depth-First Search (DFS)</option>
+                      <option value="euler">Eulerian Tour (Hierholzer)</option>
+                      <option value="hamilton">Hamiltonian Search (Backtracking)</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 700;">Start Node:</label>
+                    <select id="animStartVertexSelect" class="lab-select" style="width: 100%;"></select>
+                  </div>
+                </div>
+
+                <div class="animator-button-row">
+                  <button class="btn btn-primary btn-sm" id="animPlayBtn"><i class="fa-solid fa-play"></i> Play</button>
+                  <button class="btn btn-secondary btn-sm" id="animPauseBtn"><i class="fa-solid fa-pause"></i> Pause</button>
+                  <button class="btn btn-secondary btn-sm" id="animPrevBtn"><i class="fa-solid fa-backward-step"></i> Prev</button>
+                  <button class="btn btn-secondary btn-sm" id="animNextBtn"><i class="fa-solid fa-forward-step"></i> Next</button>
+                  <button class="btn btn-secondary btn-sm" id="animResetBtn"><i class="fa-solid fa-rotate-left"></i> Reset</button>
+                </div>
+
+                <div class="speed-slider-group">
+                  <span>Speed:</span>
+                  <input type="range" id="animSpeedSlider" class="speed-slider" min="200" max="2000" step="100" value="800" />
+                  <span id="animSpeedValue">0.8s</span>
+                </div>
+              </div>
+
+              <!-- Step State Trace Card -->
+              <h4 style="font-size: 0.85rem; margin-bottom: 6px; color: var(--accent-cyan);"><i class="fa-solid fa-terminal"></i> Step Trace Log</h4>
+              <div class="anim-state-display" id="animStateDisplay">
+                Select an algorithm and press Play to step through the traversal.
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- VIEW 5: THEORY HUB ENCYCLOPEDIA -->
+    <section id="view-theory" class="view-section">
+      <div class="theory-grid">
+        <!-- Sidebar Navigation -->
+        <div class="theory-toc-card">
+          <h3><i class="fa-solid fa-list-ol"></i> Curriculum Index</h3>
+          <ul class="theory-nav-list" id="theoryNavList">
+            <li class="theory-nav-item active" data-topic="intro">1. Introduction to Graphs</li>
+            <li class="theory-nav-item" data-topic="degrees">2. Degrees & Handshaking</li>
+            <li class="theory-nav-item" data-topic="matrices">3. Matrix Representations</li>
+            <li class="theory-nav-item" data-topic="walks">4. Walks, Trails & Paths</li>
+            <li class="theory-nav-item" data-topic="cycles">5. Cycles & Connectivity</li>
+            <li class="theory-nav-item" data-topic="traversals">6. BFS & DFS Traversals</li>
+            <li class="theory-nav-item" data-topic="euler">7. Eulerian Paths & Circuits</li>
+            <li class="theory-nav-item" data-topic="hamilton">8. Hamiltonian Paths & Cycles</li>
+            <li class="theory-nav-item" data-topic="edge-cases">9. Mathematical Edge Cases</li>
+          </ul>
+        </div>
+
+        <!-- Article Body -->
+        <article class="theory-article-card" id="theoryArticleContent">
+          <!-- Injected via JavaScript -->
+        </article>
+      </div>
+    </section>
+
+    <!-- VIEW 6: PROGRESS & ACHIEVEMENTS -->
+    <section id="view-progress" class="view-section">
+      <div class="progress-hero-card">
+        <div class="progress-user-info">
+          <h2>Player Mastery Profile</h2>
+          <div class="rank-title" id="profileRankTitle">Graph Theory Apprentice</div>
+        </div>
+        <div style="display: flex; gap: 16px;">
+          <button class="btn btn-danger btn-sm" id="resetProgressBtn"><i class="fa-solid fa-trash-can"></i> Reset Progress</button>
+        </div>
+      </div>
+
+      <h3 style="font-size: 1.3rem; margin-bottom: 16px;"><i class="fa-solid fa-medal"></i> Unlocked Badges & Achievements</h3>
+      <div class="badges-grid" id="badgesContainer">
+        <!-- Injected via JavaScript -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================
+       Level Complete Modal Dialog
+       ======================================================================== -->
+  <div class="modal-overlay" id="levelCompleteModal">
+    <div class="modal-card">
+      <div class="modal-stars-burst" id="modalStarsBurst">⭐⭐⭐</div>
+      <h2 id="modalLevelCompleteTitle">Level Completed!</h2>
+      <p id="modalLevelCompleteMessage">Mathematical theorem verified successfully.</p>
+      
+      <div class="modal-stats-summary">
+        <div class="modal-stat-box">
+          <div class="num" id="modalXpEarned">+100</div>
+          <div class="lbl">XP Gained</div>
+        </div>
+        <div class="modal-stat-box">
+          <div class="num" id="modalTotalStars">12</div>
+          <div class="lbl">Total Stars</div>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 12px; justify-content: center;">
+        <button class="btn btn-secondary" id="modalBackToMapBtn"><i class="fa-solid fa-map"></i> Worlds Map</button>
+        <button class="btn btn-primary" id="modalNextLevelBtn"><i class="fa-solid fa-arrow-right"></i> Next Level</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Client JavaScript Modules -->
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>
