@@ -204,6 +204,36 @@ npm run dev
 
 ---
 
+## ☁️ Deployment to Vercel (1-Click Ready)
+
+GraphQuest is pre-configured with `vercel.json` and `api/index.js` for zero-config Vercel deployment.
+
+### Option 1: Deploy via GitHub (Recommended)
+1. Push your repository to GitHub:
+   ```bash
+   git init
+   git add .
+   git commit -m "feat: GraphQuest complete system"
+   git branch -M main
+   git remote add origin <your-github-repo-url>
+   git push -u origin main
+   ```
+2. Go to [Vercel Dashboard](https://vercel.com/dashboard) and click **"Add New Project"**.
+3. Import your GitHub repository.
+4. Vercel will automatically detect the settings from `vercel.json`:
+   - **Build Command:** `vite build client`
+   - **Output Directory:** `client/dist`
+   - **Serverless API:** `api/index.js` handles all `/api/*` requests.
+5. Click **"Deploy"**!
+
+### Option 2: Deploy via Vercel CLI
+```bash
+npm install -g vercel
+vercel
+```
+
+---
+
 ## 🎓 Live Demonstration & Viva Guide (Criterion D)
 
 During evaluation, use the **Graph Lab** tab to demonstrate:
